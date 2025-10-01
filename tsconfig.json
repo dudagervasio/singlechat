@@ -18,6 +18,6 @@
     "declaration": true,
     "lib": ["es2020", "esnext.array", "DOM"]
   },
-  "include": ["./src/*.ts", "index.ts"],
+  "include": ["./src/*.ts", "index.ts", "./src/types/globals.d.ts"],
   "exclude": ["node_modules"],
 }
