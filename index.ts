@@ -65,6 +65,6 @@ app.get('/api/customers/:phoneNumber', async (req: Request, res: Response) => {
 const httpServer = process.env.NODE_ENV === 'development' || forceHttp === 'S'
 				? http.createServer(app)
 				: https.createServer(credentials, app);
-httpServer.listen(process.env.DG_SERVER_PORT, () => {
+httpServer.listen(process.env.DG_SERVER_PORT, '0.0.0.0', () => {
 	console.log(`listening on port ${process.env.DG_SERVER_PORT}`);
 });
