@@ -38,6 +38,12 @@ if(process.env.NODE_ENV === 'production' && forceHttp === 'N'  ){
 const cors = require('cors');
 app.use( cors() );
 
+app.get('/api', async (req: Request, res: Response) => {
+	console.log('API root');
+	res.status(200).send('API root');
+	return;
+});
+
 app.get('/api/customers/:phoneNumber', async (req: Request, res: Response) => {
 	console.log('/api/customers/:phoneNumber');
 	console.log(req.params);
@@ -51,12 +57,9 @@ app.get('/api/customers/:phoneNumber', async (req: Request, res: Response) => {
 	let customers = response.data || [];
 	res.status(200).json(customers);
 	return;
-})
+});
 
-app.get('/api', async (req: Request, res: Response) => {
-	res.status(200).send('API root');
-	return;
-})
+
 
 
 const httpServer = process.env.NODE_ENV === 'development' || forceHttp === 'S'
