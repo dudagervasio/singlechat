@@ -53,6 +53,12 @@ app.get('/api/customers/:phoneNumber', async (req: Request, res: Response) => {
 	return;
 })
 
+app.get('/api', async (req: Request, res: Response) => {
+	res.status(200).send('API root');
+	return;
+})
+
+
 const httpServer = process.env.NODE_ENV === 'development' || forceHttp === 'S'
 				? http.createServer(app)
 				: https.createServer(credentials, app);
