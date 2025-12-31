@@ -36,7 +36,9 @@ if(process.env.NODE_ENV === 'production' && forceHttp === 'N'  ){
 	credentials.cert = certificate;
 }
 const cors = require('cors');
-app.use( cors() );
+app.use( cors( {
+	origin: '*',
+}) );
 
 app.get('/api', async (req: Request, res: Response) => {
 	console.log('API root');
@@ -58,9 +60,6 @@ app.get('/api/customers/:phoneNumber', async (req: Request, res: Response) => {
 	res.status(200).json(customers);
 	return;
 });
-
-
-
 
 const httpServer = process.env.NODE_ENV === 'development' || forceHttp === 'S'
 				? http.createServer(app)
